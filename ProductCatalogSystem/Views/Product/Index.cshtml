@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ProductCatalogSystem.Models.Product>
+@{
+    ViewData["Title"] = "Məhsul Kataloqu";
+}
+
+<div class="container mt-5">
+    <div class="glass-card">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 style="color: #00f2fe; font-weight: 700; margin: 0;">
+                <span style="font-size: 1.5rem;">🌌</span> SİSTEM KATALOQU
+            </h2>
+            <a asp-action="Create" class="btn neon-btn text-decoration-none">
+                + Yeni Məhsul
+            </a>
+        </div>
+
+        @if (!Model.Any())
+        {
+            <div class="alert text-center" style="background: rgba(0,242,254,0.1); border: 1px solid #00f2fe; color: #00f2fe;">
+                Sistemdə heç bir məhsul tapılmadı. Məlumat bazası boşdur.
+            </div>
+        }
+        else
+        {
+            <div class="table-responsive">
+                <table class="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Məhsulun Adı</th>
+                            <th>Qiymət (AZN)</th>
+                            <th>Kateqoriya</th>
+                            <th class="text-end">Əməliyyatlar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td><span class="badge" style="background: #1e293b;">#@item.Id</span></td>
+                                <td style="font-weight: 500;">@item.Name</td>
+                                <td style="color: #4facfe; font-weight: bold;">@item.Price.ToString("0.00") ₼</td>
+                                <td><span class="badge rounded-pill" style="background: rgba(255,255,255,0.1); border: 1px solid #334155;">@item.Category</span></td>
+                                <td class="text-end">
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info me-2" style="border-radius: 6px;">Dəyiş</a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger" style="border-radius: 6px;" onclick="return confirm('Bu məhsulu silmək istədiyinizə əminsiniz?');">Sil</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,51 @@
+﻿@model ProductCatalogSystem.Models.Product
+@{
+    ViewData["Title"] = "Yeni Məhsul";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="glass-card">
+                <h3 class="mb-4 text-center" style="color: #00f2fe; letter-spacing: 2px;">YENİ MƏHSUL İNTEQRASİYASI</h3>
+
+                <form asp-action="Create" method="post">
+                    <div class="mb-4">
+                        <label asp-for="Name" class="form-label" style="color: #94a3b8;">Məhsulun Adı</label>
+                        <input asp-for="Name" class="form-control" placeholder="Məsələn: Lenovo LOQ" autocomplete="off" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="Price" class="form-label" style="color: #94a3b8;">Qiymət (AZN)</label>
+                        <input asp-for="Price" class="form-control" placeholder="0.00" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="Category" class="form-label" style="color: #94a3b8;">Kateqoriya</label>
+                        <select asp-for="Category" class="form-select">
+                            <option value="">-- Dropdowndan seçin --</option>
+                            <option value="Kompüter və Şəbəkə">Kompüter və Şəbəkə</option>
+                            <option value="Proqram Təminatı">Proqram Təminatı</option>
+                            <option value="Ağıllı Cihazlar">Ağıllı Cihazlar</option>
+                            <option value="Kiber Təhlükəsizlik Avadanlığı">Kiber Təhlükəsizlik Avadanlığı</option>
+                        </select>
+                        <span asp-validation-for="Category" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-grid gap-2 mt-5">
+                        <button type="submit" class="btn neon-btn">Sistemə Yüklə</button>
+                        <a asp-action="Index" class="btn btn-link text-decoration-none" style="color: #94a3b8;">Geriyə Qayıt</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

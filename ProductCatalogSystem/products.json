@@ -1,0 +1,14 @@
+[
+  {
+    "Id": 1,
+    "Name": "lenovo",
+    "Price": 2100,
+    "Category": "Komp\u00FCter v\u0259 \u015E\u0259b\u0259k\u0259"
+  },
+  {
+    "Id": 2,
+    "Name": "Modem",
+    "Price": 75,
+    "Category": "Komp\u00FCter v\u0259 \u015E\u0259b\u0259k\u0259"
+  }
+]
